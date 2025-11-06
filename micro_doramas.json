@@ -1,0 +1,33 @@
+{
+  "micro_doramas": [
+    {
+      "id": "dorama_001",
+      "titulo": "Ejemplo",
+      "duracion_objetivo": 60,
+      "genero": "romance",
+      "personajes": {
+        "A": "A",
+        "B": "B",
+        "N": "N"
+      },
+      "escenas": [
+        {
+          "id": "esc_1",
+          "duracion": 15,
+          "fondo": "calle",
+          "camara": "close",
+          "lineas": [
+            {
+              "actor": "A",
+              "texto": "Hola"
+            },
+            {
+              "actor": "B",
+              "texto": "Hola de vuelta"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

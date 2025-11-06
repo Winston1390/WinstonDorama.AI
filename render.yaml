@@ -1,0 +1,11 @@
+
+services:
+  - type: web
+    name: winston-dorama-backend
+    env: docker
+    plan: free
+    region: oregon
+    branch: main
+    dockerfilePath: Dockerfile
+    buildCommand: ''
+    startCommand: 'node index.js'
