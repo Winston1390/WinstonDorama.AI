@@ -12,12 +12,12 @@ const client = new OpenAI({
     apiKey: process.env.OPENAI_API_KEY
 });
 
-// Ruta para probar que el backend está vivo
+// ✅ Ruta para probar que el backend está vivo
 app.get("/", (req, res) => {
     res.send("Backend Winston Dorama AI está activo ✅");
 });
 
-// ✅ RUTA REAL para generar AUDIO IA
+// ✅ RUTA TTS usando modelo económico (gpt-4o-mini-tts)
 app.post("/api/tts", async (req, res) => {
     try {
         const { text, voice } = req.body;
@@ -27,12 +27,12 @@ app.post("/api/tts", async (req, res) => {
         }
 
         const response = await client.audio.speech.create({
-            model: "gpt-4o-mini-tts",
+            model: "gpt-4o-mini-tts", 
             voice: voice || "alloy",
             input: text
         });
 
-        // Convertir audio a Base64 para enviarlo
+        // Convertir audio a Base64
         const audioBuffer = Buffer.from(await response.arrayBuffer());
         const base64Audio = audioBuffer.toString("base64");
 
@@ -42,11 +42,11 @@ app.post("/api/tts", async (req, res) => {
         });
 
     } catch (err) {
-        console.error("Error generando TTS:", err);
-        res.status(500).json({ error: "Error generando audio." });
+        console.error("Error generando TTS económico:", err);
+        res.status(500).json({ error: "Error generando audio económico." });
     }
 });
 
-// Iniciar servidor
+// ✅ Iniciar servidor
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => console.log(`Servidor corriendo en puerto ${PORT}`));
